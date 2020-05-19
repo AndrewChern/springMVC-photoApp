@@ -33,7 +33,7 @@ public class MyController {
         try {
             long id = System.currentTimeMillis();
             photos.put(id, photo.getBytes());
-
+            //IMPORTANT - > here we set attribute "photo_id" for jsp pages use of this photo
             model.addAttribute("photo_id", id);
             return "result";
         } catch (IOException e) {
@@ -64,6 +64,21 @@ public class MyController {
         Set<Long> listOfId = photos.keySet();
             model.addAttribute("photo_id", listOfId);
             return "statistics";
+    }
+
+    @RequestMapping(value = "/delete_checkbox_photo", method = RequestMethod.POST)
+    public String deleteCheckbox(Model model, @RequestParam(value = "deletePhoto", required = false) long[] deleteId){
+        if (deleteId != null){
+            for (long del : deleteId){
+                photos.remove(del);
+            }
+        }
+
+        Set<Long> listId = photos.keySet();
+        model.addAttribute("photo_id", listId);
+
+        // return on statistics after delete
+        return "statistics";
     }
 
     private ResponseEntity<byte[]> photoById(long id) {
