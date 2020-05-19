@@ -5,7 +5,8 @@
   </head>
   <body>
      <div align="center">
-        <form action="/view" method="POST">
+
+         <form action="/view" method="POST">
             Photo id: <input type="text" name="photo_id">
             <input type="submit" />
         </form>
@@ -14,6 +15,9 @@
             Photo: <input type="file" name="photo">
             <input type="submit" />
         </form>
+
+         <a href=/statistics>Table of photos</a>
+
       </div>
   </body>
 </html>

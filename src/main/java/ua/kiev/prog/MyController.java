@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/")
@@ -56,6 +57,13 @@ public class MyController {
             throw new PhotoNotFoundException();
         else
             return "index";
+    }
+
+    @RequestMapping(value = "/statistics")
+    public String onStatistics(Model model) {
+        Set<Long> listOfId = photos.keySet();
+            model.addAttribute("photo_id", listOfId);
+            return "statistics";
     }
 
     private ResponseEntity<byte[]> photoById(long id) {
