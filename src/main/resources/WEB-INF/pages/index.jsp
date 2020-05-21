@@ -18,6 +18,8 @@
 
          <a href=/statistics>Table of photos</a>
 
+         <a href=/tozip>Zip of photos</a>
+
       </div>
   </body>
 </html>
